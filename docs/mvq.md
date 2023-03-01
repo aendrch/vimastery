@@ -1,7 +1,7 @@
 # Notes
 _Don't wish Vim was easier, wish you were better!_
 
-## Mastering Vim - Basics
+### Mastering Vim - Basics
 
 WSL2 - Ubuntu 22.04
 
@@ -19,3 +19,5 @@ file you open.
 for a given file. Every following time you’ll be asked for the password even without this
 option. The encryption implementation is not strong, so don’t rely only on this protection
 for your important data.
+
+##
