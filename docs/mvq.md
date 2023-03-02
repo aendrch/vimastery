@@ -50,3 +50,75 @@ bottom of the window.
 It’s similar to Vim Normal mode, but after executing one command, Vim returns to Insert mode.
 By default, ‘– (insert) –’ is shown at the bottom of the window
 
+### Commands
+
+Commands are probably the most important concept in Vim. Most of what you’ll do within Vim
+will be the result of executing different kinds of commands. In general, we can say that there
+are three ways of executing commands in Vim:
+
+**Ex commands**
+
+This is any command you can run as ```:{command}```, for example ```:help```. You will use them often.
+You can see the entire list of these commands (it’s very long, don’t do it now) by running
+```:help ex-cmd-index```.
+
+**Mapped commands**
+
+Any (more complex) commands, which we map or bind to some keys for easier access, belong
+to this group. You’ll usually add these commands to your ```.vimrc``` file.
+
+**Editing commands**
+
+These are the commands which you’ll usually use in Normal and Insert mode. These are
+commands like ```d4w``` which will delete four words after your cursor.
+
+## Working with files
+
+### Opening files
+
+Here are the two most common methods for opening files in Vim.
+
+**Method 1** - Open file from terminal
+
+Once you open your terminal, type ```vim``` and then the filename. Example:
+
+```
+$ vim /etc/passwd
+```
+
+**Method 2** - Open file from Vim
+
+When you start Vim by running ```vim``` in your terminal. there will be no files loaded, by default. Then, run command: ```:e <filename>``` to open a file in your existing Vim session.
+
+Example:
+```
+$ vim
+:e /etc/passwd
+```
+
+Very often you’d like to get the content of some other file into your current opened file. Actually,
+to be more precise, instead of “current opened file,” from now on, we’ll use the term “current
+buffer.”
+So when you open an existing file, the content of this file is loaded in one Vim buffer. You’ll learn
+much more about buffers later, but for now, just remember that buffer is a piece of memory
+that’s been loaded with the content of a file.
+
+Of course, you could open the second file, copy the content you need, return to first file, and
+paste. But, there’s a better way.
+
+Vim has a **r**ead command:
+
+```
+:read
+:r
+```
+
+You can use this command to insert a file, or the output from a system command, into the
+current buffer.
+Here are a few examples of how you can use it:
+
+|### Command        |###Description
+|```:r file.txt```  |
+|
+|
+|
