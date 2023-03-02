@@ -11,7 +11,7 @@ Ubuntu command to install (with clipboard support): ```apt install vim-gtk3```
 
 Some useful commands:
 
-* ```:wq <filename>``` - Command to **save the file and exit Vim**. Letter ```w``` comes from write and letter ```q``` comes from quit.* ```:q!``` - Command to close the file without saving it. 
+* ```:wq <filename>``` - Command to **save the file and exit Vim**. Letter ```w``` comes from write and letter ```q``` comes from quit
 * ```+NUM ``` - The cursor will be positioned on the line “NUM” for the first file you open.
 * ```+/{pattern} ``` -  The cursor will be positioned on the first line containing “pattern” in the first
 file you open.
