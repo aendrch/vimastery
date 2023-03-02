@@ -1,5 +1,5 @@
 # Notes
-_Don't wish Vim was easier, wish you were better!_
+> _Don't wish Vim was easier, wish you were better!_
 
 ## Mastering Vim - Basics
 
@@ -117,10 +117,10 @@ You can use this command to insert a file, or the output from a system command, 
 current buffer.
 Here are a few examples of how you can use it:
 
-```:r file.txt``` - Insert the file file.txt below the cursor in the current buffer.
-```:0r file.txt ``` - Insert the file file.txt before the first line.
-```:r!sed -n 2,8p file.txt``` - Insert lines 2 to 8 from file file.txt below the cursor.
-```:r !ls``` - Insert a directory listing below the cursor.
+* ```:r file.txt``` - Insert the file file.txt below the cursor in the current buffer.
+* ```:0r file.txt ``` - Insert the file file.txt before the first line.
+* ```:r!sed -n 2,8p file.txt``` - Insert lines 2 to 8 from file file.txt below the cursor.
+* ```:r !ls``` - Insert a directory listing below the cursor.
 
 All of these should be run in Normal mode. The last command will work only in Linux
 or macOS.
@@ -129,7 +129,12 @@ or macOS.
 the cursor. Remember it as "goto file". Similarly, using gx command, you can open links in
 your default browser.
 
+### Closing files 
 
+There are more than a few ways to close a file in Vim. Here are some of the most common ways.
 
-
-
+* ```:wq``` - Save currently opened file and exit Vim (even if file is not changed).
+* ```:x``` - Exit Vim but write only when changes have been made.
+* ```ZZ``` - Equivalent to ```:x```. Notice there's no ```:```. This is a key press.
+* ```:q!``` - Exit Vim without saving currently opened file.
+* ```:qa``` - Exit all open files in current Vim session.
