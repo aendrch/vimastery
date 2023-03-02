@@ -117,8 +117,19 @@ You can use this command to insert a file, or the output from a system command, 
 current buffer.
 Here are a few examples of how you can use it:
 
-|### Command        |###Description
-|```:r file.txt```  |
-|
-|
-|
+```:r file.txt``` - Insert the file file.txt below the cursor in the current buffer.
+```:0r file.txt ``` - Insert the file file.txt before the first line.
+```:r!sed -n 2,8p file.txt``` - Insert lines 2 to 8 from file file.txt below the cursor.
+```:r !ls``` - Insert a directory listing below the cursor.
+
+All of these should be run in Normal mode. The last command will work only in Linux
+or macOS.
+
+> _Related tip_: Using command gf, you can open a file whose name (or path) is under or after
+the cursor. Remember it as "goto file". Similarly, using gx command, you can open links in
+your default browser.
+
+
+
+
+
