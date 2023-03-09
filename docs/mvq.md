@@ -161,4 +161,14 @@ Just like in any other text editor, you can use arrow keys (Up, Down, Left, Righ
 
 Most advanced Vim users prefer to keep their hands fingers around the home row on akeyboard. This is possible, because instead of arrows, you can use _keys h, j, k_ and _l_ for navigation. 
 
-* 
+* _h_ - left
+* _j_ - down
+* _k_ - up
+* _l_ - right
+
+In the beginning, it might be hard to get used to these. The first problem is to remember which key does what. Here’s my suggestion for how to remember them:
+
+Look at your keyboard and notice how _j_ looks like an arrow down, with a half head. So _j_ takes your cursor one position down. These keys are positioned in this way(assuming you’re using aqwerty keyboard layout): _H J K L_.
+
+The key far **right** is _l_ and it will take you to the **right**. The key far **left** is _h_ and it will take you to the **left**. Two keys remain in the middle, _j_ and _k_.
+ 
