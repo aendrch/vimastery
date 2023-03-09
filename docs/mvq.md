@@ -231,7 +231,7 @@ For example, you could press _Ctrl-o_ ```F m``` to move to previous ```m``` char
 However, sometimes, you'd find it easier to stay in Insert mode. In these cases, using arrow keys to move arround is usually not fast enough. Here's what you could do:
 
 * _Shift-Right-arrow_ | Go to the right, word by word
-* _Shift-Left-arrow_   | Go to the left, word by word
+* _Shift-Left-arrow_ | Go to the left, word by word
 
 _Related tip_: While in Insert mode, you can press **Ctrl-o** to get back to Normal mode and execute command, after which you'll be automatically returned to Insert mode.
 
