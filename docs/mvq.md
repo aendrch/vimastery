@@ -205,3 +205,35 @@ Note: All of these commands for navigation can take a number as a prefix. For ex
 ### Jumping around the file
 
 Vim offers you simple ways to go to the beginning or end of your file. This can be very handy when you’re working with large files. Beside these, in the table below, there are a few more handy shortcuts for jumping through the file:
+
+* ```gg``` - Go to the top of the file
+* ```G``` - Go to the bottom of the file
+* ```{``` - Go to the beginning of the current paragraph
+* ```}``` - Go to the end of the current paragraph
+* ```%``` - Go to the matching pair of (), [], {}
+* ```50%``` - Go to the line at the 50% of the file
+* ```:NUM``` - Go to line NUM. ```:28``` jumps to line 28
+
+### Navigating inside the window
+
+Here are a few handy shortcuts you can benefit from, when it comes to moving your cursor in the current Vim window:
+
+* ```H``` - Move cursor to first (**h**ighest) line in current window.
+* ```L``` - Move cursor to **l**owest line in current window.
+* ```M``` - Move cursor to the (**m**iddle line in current window.
+
+### Navigating in Insert mode
+
+If you want to move around and make edits in Insert mode, you shouldn't, most of the time. The proper way would be to hit _Esc_ to getNormal mode, go to the correct location, make an edit, and get back to Insert mode.
+
+For example, you could press _Ctrl-o_ ```F m``` to move to previous ```m``` character and get Insert mode.
+
+However, sometimes, you'd find it easier to stay in Insert mode. In these cases, using arrow keys to move arround is usually not fast enough. Here's what you could do:
+
+
+
+
+
+
+
+
