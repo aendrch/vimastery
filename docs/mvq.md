@@ -265,4 +265,23 @@ Press ```#``` and Vim will search backwards for the word under yourcursor.
 
 These two commands are searching for exact words. So if you perform the search using these commands while your cursor is on word ```master```, it would not find the word ```mastering```.
 
-So if you don't want exact word matching, use commands ```g*``` and```g#``` accordingly.
+So if you don't want exact word matching, use commands ```g*``` and ```g#``` accordingly.
+
+### Search history
+
+Vim keeps a search history. Just type ```/``` or ```?``` and use the arrow up down keys to go through previous search commands. Of course, you can edit a command (or only a pattern) you find in history and press _Enter_ to search again.
+
+Let's say the cursor is on a word, and you want to search for a similar word. Instead of typing the entire word, here's what you can do:
+
+1. Press ```/```
+2. Then press ```Ctrl-r``` and then ```Ctrl-w```.
+
+This will copy the current word under cursor to the command line, ready for searching. Now you can edit it and press _Enter_.
+
+Once you're done with searching, you can hit _Ctrl-o to jump back to your previous position (or _Ctrl-i_ which will jump forwards).
+
+What if you search for the last searched pattern again? There's no need to type the pattern again, or ever fo through history. Just press ```/``` and hit _Enter_ - an empty search pattern will repeat the last search. This will also work for ```:s``` and ```:g``` commands, which we'll cover later.
+
+Vim also allows you to enter a count before search. For example, what if you want to jump to the fifht occurrence of the pattern? Simply type ```5/pattern```. Also, typing ```6*``` will search for the sixt occurrence of the current word under the cursor.
+
+We have just covered the most important search basics.
