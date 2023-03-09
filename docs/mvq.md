@@ -245,3 +245,24 @@ You can search forward by pressing ```/``` and then typing search pattern. Press
 
 Now, let's try to figure out what would be the command to find the first match:
 
+1. First march, is usually placed "on the top" of all others.
+2. We already mentioned that command to jump to the top of a file is ```gg```.
+3. And now we know that pressing ```n``` while searching will take us to next search pattern occurrence.
+
+So, if you perform a search for a pattern, and you want to jump to the first match, you need to hit ```ggn```. Yup, this way we tell Vim: "go to the top of the file and find next (actually first occurrence)".
+
+It's the same logic for the command to take you to the last match of your search. As you might already guess. it's ```GN```.
+
+You can search backwards by pressing ```?``` and then typing your search pattern. Pressing ```n``` searches in the same direction (in this case backwards), while ```N``` searches in the opposite direction (in this case forwards).
+
+### Searching for the current word
+
+Vim can search for words under your cursor. In Normal mode, place your cursor to any word.
+
+Press ```*``` and Vim will search forwards for the next occurrence of that word! How cool is that!
+
+Press ```#``` and Vim will search backwards for the word under yourcursor.
+
+These two commands are searching for exact words. So if you perform the search using these commands while your cursor is on word ```master```, it would not find the word ```mastering```.
+
+So if you don't want exact word matching, use commands ```g*``` and```g#``` accordingly.
