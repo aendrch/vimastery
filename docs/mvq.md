@@ -138,3 +138,27 @@ There are more than a few ways to close a file in Vim. Here are some of the most
 * ```ZZ``` - Equivalent to ```:x```. Notice there's no ```:```. This is a key press.
 * ```:q!``` - Exit Vim without saving currently opened file.
 * ```:qa``` - Exit all open files in current Vim session.
+
+### Saving files
+
+There are several ways to save a file in Vim. When you save the file, you actually write the contents of the buffer to the disk. That's why, the command for saving is "**w**rite".
+
+Here are the most common commands you should know:
+
+* ```:w``` - Save currently opened file (which was previously saved).
+* ```:w file.txt``` - Save currently opened file as ```file.txt```.
+* ```:w! file.txt``` - Save file as ```file.txt``` with overwrite option.
+* ```:sav file.txt``` - Save current buffer as a new ```file.txt```.
+* ```:up[date] file.txt``` - Like ```:w``` but only save when the buffer has been modified.
+
+### Navigation 
+
+In order to be truly efficient with Vim, you have to learn how to properly navigate through your files, buffers, help system, etc. This section will enable you to improve your navigation speed drastically.
+
+**Basic movement**
+
+Just like in any other text editor, you can use arrow keys (Up, Down, Left, Right) to move around within your text Vim. But, in Vim, there's an alternative.
+
+Most advanced Vim users prefer to keep their hands fingers around the home row on akeyboard. This is possible, because instead of arrows, you can use _keys h, j, k_ and _l_ for navigation. 
+
+* 
