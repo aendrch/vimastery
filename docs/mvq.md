@@ -233,6 +233,15 @@ However, sometimes, you'd find it easier to stay in Insert mode. In these cases,
 * _Shift-Right-arrow_ | Go to the right, word by word
 * _Shift-Left-arrow_ | Go to the left, word by word
 
-_Related tip_: While in Insert mode, you can press **Ctrl-o** to get back to Normal mode and execute command, after which you'll be automatically returned to Insert mode.
+> _Related tip_: While in Insert mode, you can press **Ctrl-o** to get back to Normal mode and execute command, after which you'll be automatically returned to Insert mode.
 
+### Basic search
+
+Vim has many search related options.
+
+_All search operations ins Normal mode_
+
+You can search forward by pressing ```/``` and then typing search pattern. Pressing _Esc_ will cancel it, while pressing _Enter_ will perform the search. Once you hit _Enter_, you can press ```n``` to search forward for the next occurence, or ```N``` to search backwards.
+
+Now, let's try to figure out what would be the command to find the first match:
 
