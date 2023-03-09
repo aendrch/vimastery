@@ -171,4 +171,37 @@ In the beginning, it might be hard to get used to these. The first problem is to
 Look at your keyboard and notice how _j_ looks like an arrow down, with a half head. So _j_ takes your cursor one position down. These keys are positioned in this way(assuming you’re using aqwerty keyboard layout): _H J K L_.
 
 The key far **right** is _l_ and it will take you to the **right**. The key far **left** is _h_ and it will take you to the **left**. Two keys remain in the middle, _j_ and _k_.
- 
+
+### Navigate through words
+
+It will take you some time to get used to, but I highly recommend that you try to adopt this kind of navigation. When youb operate on a single line (or even a few), instead of movin one character up, down, left or right, you can move between words. Also, ther are some other useful shortcuts you should remember.
+
+* ```w``` - Go to the start of the next **w**ord.
+* ```W``` - Go to the start of the next **W**ord.
+* ```e``` - Go to the **e**nd of the current **word**.
+* ```E``` - Go to the previous (**b**efore) **word**.
+* ```b``` - Go to the previous (**b**efore) **word**.
+* ```B``` - Go to the previous (**b**efore) **WORD**.
+
+```WORD``` consist of a sequence of a non-blank characters. It's always delimited by white space. On the other hand, ```word``` is delimited by non-keyword characters, whic are configurable. Remember that ```word``` ends at a non-word character, such as a ., - or ) .
+
+For example, in sentence:
+
+```Vim "navigation" is not-so difficult!```
+
+we have 5 ```WORDS```: ```Vim "navigation" is not-so difficult!```, all delimited by white space. However, we have 10 ```words```.
+
+So if you're navigating through source code, and want to stop at delimiters and characters like ( ) . { } , $ use  ```w```. If you're working with text and want to skip these, then use ```W```. For more information, take a look at ```:help 03.1```.
+
+### Scrolling pages
+
+Note: All of these commands for navigation can take a number as a prefix. For example ```3w``` will take you to the start of the 3rd next word, while ```6j``` will take your file page by page, you can use the following shortcuts:
+
+* ```Ctrl - d``` - Scroll **d**own half page
+* ```Ctrl - u``` - Scroll **u**p half page
+* ```Ctrl - f``` - Scroll down **f**ull page (or **f**orwards)
+* ```Ctrl - b``` - Scroll up full page (to **b**eginning, or **b**ackwards)
+
+### Jumping around the file
+
+Vim offers you simple ways to go to the beginning or end of your file. This can be very handy when you’re working with large files. Beside these, in the table below, there are a few more handy shortcuts for jumping through the file:
