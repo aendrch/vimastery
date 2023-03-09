@@ -197,10 +197,10 @@ So if you're navigating through source code, and want to stop at delimiters and 
 
 Note: All of these commands for navigation can take a number as a prefix. For example ```3w``` will take you to the start of the 3rd next word, while ```6j``` will take your file page by page, you can use the following shortcuts:
 
-* ```Ctrl - d``` - Scroll **d**own half page
-* ```Ctrl - u``` - Scroll **u**p half page
-* ```Ctrl - f``` - Scroll down **f**ull page (or **f**orwards)
-* ```Ctrl - b``` - Scroll up full page (to **b**eginning, or **b**ackwards)
+* ```Ctrl-d``` - Scroll **d**own half page
+* ```Ctrl-u``` - Scroll **u**p half page
+* ```Ctrl-f``` - Scroll down **f**ull page (or **f**orwards)
+* ```Ctrl-b``` - Scroll up full page (to **b**eginning, or **b**ackwards)
 
 ### Jumping around the file
 
