@@ -210,7 +210,7 @@ Vim offers you simple ways to go to the beginning or end of your file. This can 
 * ```G``` - Go to the bottom of the file
 * ```{``` - Go to the beginning of the current paragraph
 * ```}``` - Go to the end of the current paragraph
-* ```%``` - Go to the matching pair of (), [], {}
+* ```%``` - Go to the matching pair of ( ), [ ], { }
 * ```50%``` - Go to the line at the 50% of the file
 * ```:NUM``` - Go to line NUM. ```:28``` jumps to line 28
 
