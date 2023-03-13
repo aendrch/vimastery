@@ -285,3 +285,38 @@ What if you search for the last searched pattern again? There's no need to type 
 Vim also allows you to enter a count before search. For example, what if you want to jump to the fifht occurrence of the pattern? Simply type ```5/pattern```. Also, typing ```6*``` will search for the sixt occurrence of the current word under the cursor.
 
 We have just covered the most important search basics.
+
+## File Manager (netwr) in Vim
+
+Vim comes with a built-in **netwr** plugin which is a great way to browse file and directories within a Vim session. This file manager supports four ways of displaying files and directories.
+
+You can launch netwr in several ways like:
+
+* ```:Ex``` - open current directory in current Vim window (remember it as a shortcut of **Ex**plore).
+* ```:Ex <dir>``` - open specified directory ```<dir>```.
+* ```:Sex``` - open current directory in horizontal split window (fun fact: Vim is the only editor in the world which has Sex as a command!).
+* ```:Vex``` - open current directory in vertical split window.
+* ```:Tex``` - open current directory in a new tab.
+* ```:Lexplore``` - open current directory in vertical split on the left. Default setting opens files in the window to the right of thenetrw window.
+
+Try out these commands and see which one works the best for you. I prefer to have a file explorer in a vertical split. I usually run:
+
+```:40vs +Ex```
+
+to open current directory in vertical split window with width of 40 columns.
+
+After you read the chapter on mapping, you'll know how to create a shortcut for this command, so you can open and close file explorer quickly.
+
+You can change the directory listing view to show more or less information, change the sorting order or hide some kinds of files. Once you start netwr, try to hit ```i``` to cycle through the view types. There are four of them: thin, long, wide and tree. Once you choose your favorite, set it to be the default one in your ```.vimrc``` file, like:
+
+```let g:netrw_liststyle = 3```
+
+### Changing how files are opened
+
+With Vim, not only can you open files, but you can also open directories! Yes, go ahead and try to open some directory. For example this command:
+
+```$ vim /home/kidfella``` 
+
+will open my home directory. What I'll get is a list of all files and list of all subdirectories in the directory I've opened.
+
+
