@@ -343,10 +343,220 @@ let g:netrw_browse_split = 4
 
 Option ```4``` is the one I personally prefer. It open files in previous window (the current split you have beside netrw split).
 
-## Set netrw split width
+### Set netrw split width
 How file explorer will position a window for the new file you open, can be set with the netrw_browse_split option. If you’d like to setthe width of netrw split to 20% of your entire Vim window, put this in your ```.vimrc```:
 
 ```
 let g:netrw_winsize = 20
 ```
 
+## Editing files via SSH
+
+One of the lesser known features of Vim is the ability to edit files remotely, over the network. This feature comes with the netrw plugin. To achieve this, netrw uses the SSH protocol, and manages remote files via the scp command.
+
+Here’s how to do it:
+
+```
+vim scp://user@myserver[:port]//path/to/file.txt
+```
+
+Note the double ```/``` for the directory on the remote host, which is needed to correctly resolve the absolute path. ```[:port]``` is optional.
+
+So with the command above you can open a file located on a remote host for editing.
+
+What actually happens in the background is that Vim uses ```scp``` to download the requested file from a remote machine to a local ```/tmp``` directory, and then opens it for editing. When you save your changes to the file, the changes are first applied to a local copy in ```/tmp``` directory. After that, the file is uploaded via scp to the remote host.
+
+If you open a directory on a remote host, you could also use netrw to browse through remote files and directories. The important thing is to always specify the directory path with ```/``` at the end.
+
+Of course, it’s recommended that you use SSH keys for authentication. Otherwise, you might be asked for the SSH password too often.
+
+Beside SSH, there are other protocols supported such as sftp, ftp, dav, etc.
+
+For example, to open a file on a remote FTP server, you could run a command like:
+```
+vim ftp://hostname/path/to/file
+```
+
+Netrw offers lots of options and possibilities for remote editing, so for more information on this, take a look at ```:help scp```.
+
+## Personalizing Vim
+
+If you’ve had any experience with some of the text editors for programmers, it’s most likely you’ll be disappointed with how Vim looks.But this is actually a good thing. While other editors try to force you use their features, Vim does the opposite.
+
+The “interface” is very minimal. This means that you have to spend some time and effort to make the Vim interface look pretty, as well as to improve your productivity. The benefit is this process of configuration will help you understand better how Vim works.
+
+### Vim configuration explained
+
+As a first step, we have to understand how to configure Vim. There are multiple configuration files, which can reside on different locations in your system, depending on which operating system you use or where have you installed Vim.
+
+The main configuration file is vimrc. It exists in two versions—global and personal. Your personal vimrc file is usually placed in yourhome directory. In Linux operating systems it’s usually a hidden file called ```.vimrc```.
+
+Whatever you change in this file will overrule any previous settings in the global vimrc file. If you’re not sure of your home directory location, run this command in Vim: ```:echo $HOME```.
+
+The permanent configuration is set through ```.vimrc.``` But you can also configure the current Vim session. For example, if you’ve started Vim, and you don’t have line numbers shown, you can run the command:
+```
+:set number
+```
+
+to enable line numbers for the current session. If you’d like to disable this option for the current Vim session, you’d run:
+
+```
+:set nonumber
+```
+
+Another way to enable/disable boolean options is to use exclamation point ```!```. In this case, we could enable line numbers (assuming they're disabled) with a command:
+
+```
+:set number!
+```
+
+### Make Vim look beautiful
+
+Vim allows its users to change the colors it uses. So yes, Vim supports color schemes. To begin, choose some of the installed color schemes. Later you can create your own, or download some you like, and install them in Vim.
+
+In order to choose your color scheme, open a file with some source code. Then type: ```:colorscheme``` and press _Tab_. Then press Enter. You’ll see what the scheme looks like. Repeat the same command, just press Tab more times, until you find the color scheme you like. Once you find it, add to your ```.vimrc``` file:
+
+```
+colorscheme scheme_name
+```
+
+Sometimes, in a big file with lots of code and syntax coloring, it can be difficult to track your cursor. That’s why it’s a good tip to mark the line the cursor is currently in. You can try this out by typing ```:set cursorline``` in Vim, or to make this permanent, add to your ```.vimrc``` file:
+
+```
+set cursorline
+```
+
+If you don’t like the styling of the line, you can change it like this, for example: 
+
+```
+:highlight CursorLine guibg=lightblue ctermbg=lightgrey
+```
+
+If you really have a problem in following your cursor, then you can use a command to mark the current column of the cursor, coloring the entire column: ```set cursorcolumn```. 
+
+Of course, it’s really important to add the line numbers, so also put: ```set nu[mber]``` to your ```.vimrc``` file.
+
+If you want to enable spell checking for default, English language, you should add this: ```set spell```. If you want spell checking enabled for some other language, you can do it this way (example for German language): ```set spelllang=de```. If you want spell checking for more languages at once, no problem: ```set spelllang=en````,```de```,```it```. Of course, if you change spelllang setting to a language that’s not installed, Vim will ask you if it should try to download it.
+
+You can always check the configuration of any Vim setting by adding a ````?``` to the end of its name.
+
+For example:
+
+```
+set spell?
+nospell
+```
+
+### Usability improvements
+
+Default Vim settings are not really great. If you’re going to use Vim seriously, then it’s definitely worth it to spend some time on configuration. As we already said, all the configuration we’ll manage through the ```.vimrc``` file.
+
+In this part, I will give you a list of different Vim settings, which you should consider and try out. At the end of this chapter, you’ll also find a snippet of basic recommended options, which you can just copy to your .vimrc file. Later on, you can continue with configuration on your own.
+
+### General configuration options:
+
+* ```set nocompatible``` - Use Vim settings, rather then Vi settings. It’s important to have this on the top of your file, as it influences other options.
+* ```set backspace=indent,eol,start``` - Allow backspacing over indention, line breaks and insertion start.
+* ```set history=1000``` - Set bigger history of executed commands.
+* ```set showcmd``` - Show incomplete commands at the bottom.
+* ```set showmode``` - Show current mode at the bottom.
+* ```set autoread``` - Automatically re-read files if unmodified inside Vim.
+* ```set hidden``` - Manage multiple buffers effectively: the current buffer can be “sent” to the background without writing to disk. When a background buffer becomes current again, marks and undo-history are remembered. See chapter Buffers to understand this better.
+
+### User Interface Options
+
+* ```set laststatus=2``` - Always display the status bar.
+* ```set ruler``` - Always show cursor position.
+* ```set wildmenu``` - Display command line’s tab complete options as a menu.
+* ```set tabpagemax=40``` - Maximum number of tab pages that can be opened from the command line.
+* ``` colorscheme desert``` - Change color scheme.
+* ```set cursorline``` - Highlight the line currently under cursor.
+* ```set number``` - Show line numbers on the sidebar.
+* ```set relativenumber``` - Show line number on the current line and relative numbers on all other lines. Works only if the option above (number) is enabled.
+* ```set noerrorbells``` - Disable beep on errors.
+* ```set visualbell``` - Flash the screen instead of beeping on errors.
+
+* ```set mouse=a``` - Enable mouse for scrolling and resizing.
+* ```set background=dark``` - Use colors that suit a dark background.
+* ```set title``` - Set the window’s title, reflecting the file currently being edited.
+
+### Swap and backup file options - disable all of them:
+
+* ```set noswapfile```
+* ```set nobackup```
+* ```set nowb```
+
+### Indentation options:
+
+* ```set autoindent``` - New lines inherit the indentation of previous lines.
+* ```filetype plugin indent on``` - Smart auto indentation (instead of old smartindent option).
+* ```set tabstop=4``` - Show existing tab with 4 spaces width.
+* ```set shiftwidth=2``` - When indenting with ‘>’, use 2 spaces width.
+* ```set expandtab``` - On pressing tab, insert 4 spaces.
+* ```set nowrap``` - Don’t wrap lines.
+
+### Search options:
+
+* ```set incsearch``` - Find the next match as we type the search.
+* ```set hlsearch``` - Highlight searches by default.
+* ```set ignorecase``` - Ignore case when searching . . .
+* ```set smartcase``` - . . . unless you type a capital.
+
+### Text rendering options
+
+* ```set encoding=utf-8``` - Use an encoding that supports Unicode.
+* ```set linebreak``` - Wrap lines at convenient points, avoid wrapping a line in the middle of a word.
+* ```set scrolloff=3``` - The number of screen lines to keep above and below the cursor.
+* ```set sidescrolloff=5``` - The number of screen columns to keep to the left and right of the cursor.
+* ```syntax enable``` - Enable syntax highlighting.
+
+### Miscellaneous Options
+
+* ```set confirm``` - Display a confirmation dialog when closing an unsaved file.
+* ```set nomodeline``` - Ignore file’s mode lines; use vimrc configurations instead.
+* ```set nrformats-=octal``` - Interpret octal as decimal when incrementing numbers.
+* ```set shell``` - The shell used to execute commands.
+* ```set spell``` - Enable spellchecking.
+
+### Status line
+The statusline in Vim is the bar along the bottom of the Vim window. The purpose of statusline is to give you various information about the status of the current buffer. The default statusline includes info like file path, permissions, line numbers and a percentage number of where you are in the file.
+
+Although the default statusline offers quite a nice set of information, you can always improve it, if desired. There are even a couple of quite popular plugins for this purpose.
+
+We’re going to cover just the basics, so if you want to modify your status line, you know how to.
+
+Status line, by default, is shown only if you have more than one buffer open. However, it’s better to show it all the time, and you can do this by setting:
+
+```
+"show status line
+set laststatus=2
+```
+
+in your ```.vimrc file.``` You’ll also notice a line ```"show status line```, which is a comment describing this option. So whenever you want to add a comment in ```.vimrc``` file, start the line with ```"``` character.
+
+If, for some reason, you want to disable it, this is what you need:
+
+```
+set laststatus=0
+```
+
+Status line can be set like this in your ```.vimrc``` file:
+
+```
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
+```
+
+This can be a bit hard to read and understand if you’re a beginner. A different way of setting it
+could be something like:
+
+```
+set statusline=%t	 "tail of the filename
+set statusline+=%{&ff}	 "file format
+set statusline+=%h	 "help file flag
+set statusline+=%m	 "modified flag
+set statusline+=%r	 "read only flag
+set statusline+=%y	 "filetype
+set statusline+=%c,	 "cursor column
+set statusline+=%l/%L	 "cursor line/total lines
+set statusline+=\ %P	 "percent through file
+```
