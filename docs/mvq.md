@@ -436,7 +436,7 @@ If you really have a problem in following your cursor, then you can use a comman
 
 Of course, it’s really important to add the line numbers, so also put: ```set nu[mber]``` to your ```.vimrc``` file.
 
-If you want to enable spell checking for default, English language, you should add this: ```set spell```. If you want spell checking enabled for some other language, you can do it this way (example for German language): ```set spelllang=de```. If you want spell checking for more languages at once, no problem: ```set spelllang=en````,```de```,```it```. Of course, if you change spelllang setting to a language that’s not installed, Vim will ask you if it should try to download it.
+If you want to enable spell checking for default, English language, you should add this: ```set spell```. If you want spell checking enabled for some other language, you can do it this way (example for German language): ```set spelllang=de```. If you want spell checking for more languages at once, no problem: ```set spelllang=en``` ,```de```,```it```. Of course, if you change spelllang setting to a language that’s not installed, Vim will ask you if it should try to download it.
 
 You can always check the configuration of any Vim setting by adding a ````?``` to the end of its name.
 
