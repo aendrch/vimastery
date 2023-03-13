@@ -560,3 +560,64 @@ set statusline+=%c,	 "cursor column
 set statusline+=%l/%L	 "cursor line/total lines
 set statusline+=\ %P	 "percent through file
 ```
+
+This format is much more useful, especially if you’d like to experiment with your status line. The easiest way to configure your status line is with the built in flags.
+
+For example,```%m``` shows a ```[+]``` if the current buffer is modified. Using %L shows the total number of lines of the current file.
+
+Of course, there are many of them, and that’s out of the scope for this book. Take a look at ```:help``` statusline for more information on them.
+
+> Related tip: Using command __g Ctrl-g__, you can show the detailed information about the number of lines, words, characters, etc. in your current buffer
+
+### Backup files
+
+Vim can make backups of files you edit, so you’re safe from losing data. I don’t use this Vim feature personally, and I would suggest you set up a better backup solution for your work.
+
+Of course, this feature can be useful. Backups are controlled by the settings of two options: ```backup``` and ```writebackup```. If interested, look these up in ```:help```.
+
+Just like for swap files, you can also keep backup files better organized, by creating a directory and adding it to your ```.vimrc```:
+
+```
+set backupdir=~/.vim/.backup//
+```
+
+### Project specific .vimrc
+
+If you’re working on multiple different projects, with different types of files, you might want to have specific configurations for some types of your projects.
+
+Vim allows you to have a project specific ```.vimrc``` file. First you need to enable it by adding this to
+your ```.vimrc```:
+
+```
+" enable project speficific vimrc
+set exrc
+```
+
+Then you need to create your specific project ```.vimrc``` file configuration in the root of your project folder. This way, you can keep your main ```.vimrc``` file nice and clean, and have a specific configuration for other projects.
+
+### Basic recommended configuration
+
+It will take you some time and experience to configure Vim to fit your needs. You can copy this snippet to your ```.vimrc``` file to get you started. I recommend you start with this minimal (but good!) configuration.
+
+As you progress through the book, your configuration will improve. Most importantly, once you start using Vim regularly, you’ll get ideas on what you’d like to improve and change. At that time, come back to this chapter and enable additional options you might need. Also, Google is your friend. Over time, you’ll be able to pick up tricks and configuration options from other advanced Vim users.
+
+But take your time, and don’t spend a lot of time tweaking your Vim configuration right now. Use this configuration from below, and keep learning.
+
+Here’s the basic configuration which you can use right away:
+
+```
+set nocompatible 	" Use Vim settings, rather than Vi settings
+set softtabstop=2 	" Indent by 2 spaces when hitting tab
+set shiftwidth=4 	" Indent by 4 spaces when auto-indenting
+set tabstop=4 	" Show existing tab with 4 spaces width
+syntax on 	" Enable syntax highlighting
+filetype indent on 	" Enable indenting for files
+set autoindent 	" Enable auto indenting
+set number 	" Enable line numbers
+colorscheme desert 	" Set nice looking colorscheme
+set nobackup 	" Disable backup files
+set laststatus=2 	"show status line
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+set wildmenu 	" Display command line's tab complete options as a menu.
+```
+
