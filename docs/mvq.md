@@ -319,4 +319,26 @@ With Vim, not only can you open files, but you can also open directories! Yes, g
 
 will open my home directory. What I'll get is a list of all files and list of all subdirectories in the directory I've opened.
 
+When you open a directory with Vim, you actually started netrw. So yes, that’s the way to start it out of Vim. Now, it’s important to know that you can perform some of the basic file manager operations using netrw:
+
+* ```<Enter>``` - opens the file under the cursor, or enters the directory under the cursor
+* ```D``` - deletes the file under the cursor. You can visually select multiple files and use this command to delete all of them.
+* ```R``` - renames the file under the cursor.
+* ```X``` - executes the file under the cursor.
+* ```%``` - creates a new file in the current directory. Vim will ask you for a file name and open a buffer.
+
+By default, when you hit Enter to open a file, it will be opened in the same window as the netrw. That’s not really practical. You would usually like to keep netrw in a side split, and load your files in another split. Fortunately, this behavior can be changed with netrw_browse_split option. To make the selection permanent add the following to your ```.vimrc```:
+
+```
+let g:netrw_browse_split = 4
+```
+
+Option ```4``` is the one I personally prefer. It open files in previous window (the current split you have beside netrw split).
+
+## Set netrw split width
+How file explorer will position a window for the new file you open, can be set with the netrw_browse_split option. If you’d like to setthe width of netrw split to 20% of your entire Vim window, put this in your ```.vimrc```:
+
+```
+let g:netrw_winsize = 20
+```
 
