@@ -187,7 +187,9 @@ It will take you some time to get used to, but I highly recommend that you try t
 
 For example, in sentence:
 
-```Vim "navigation" is not-so difficult!```
+```
+Vim "navigation" is not-so difficult!
+```
 
 we have 5 ```WORDS```: ```Vim "navigation" is not-so difficult!```, all delimited by white space. However, we have 10 ```words```.
 
@@ -301,7 +303,9 @@ You can launch netwr in several ways like:
 
 Try out these commands and see which one works the best for you. I prefer to have a file explorer in a vertical split. I usually run:
 
-```:40vs +Ex```
+```
+:40vs +Ex
+```
 
 to open current directory in vertical split window with width of 40 columns.
 
@@ -309,13 +313,17 @@ After you read the chapter on mapping, you'll know how to create a shortcut for 
 
 You can change the directory listing view to show more or less information, change the sorting order or hide some kinds of files. Once you start netwr, try to hit ```i``` to cycle through the view types. There are four of them: thin, long, wide and tree. Once you choose your favorite, set it to be the default one in your ```.vimrc``` file, like:
 
-```let g:netrw_liststyle = 3```
+```
+let g:netrw_liststyle = 3
+```
 
 ### Changing how files are opened
 
 With Vim, not only can you open files, but you can also open directories! Yes, go ahead and try to open some directory. For example this command:
 
-```$ vim /home/kidfella``` 
+```
+$ vim /home/kidfella
+``` 
 
 will open my home directory. What I'll get is a list of all files and list of all subdirectories in the directory I've opened.
 
