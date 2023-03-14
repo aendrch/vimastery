@@ -621,3 +621,159 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 set wildmenu 		" Display command line's tab complete options as a menu.
 ```
 
+### Undo and Redo
+
+Vim has a very powerful undo feature. When you press u in Normal mode, or run ```:u``` in Command mode, you’ll call the Undo command. To undo all recent changes on the current line, press ```U```. 
+
+When you press _Ctrl-r_ in Normal mode or run ```:red[o]```, you’ll run the redo command.
+
+If you want to undo multiple times, just press ```u``` the desired number of times. For example, command ```uuu``` will undo the last three changes. To undo multiple changes you can also use command u with a digit prefix, for example: ```5u```—which will undo the last five changes.
+
+That’s not all—it gets even better. In Vim, you can travel through time! Using command ```ea[rlier]``` you can go back in time, while using command ```lat[er]``` you can travel forward. These two commands work on a state basis. This means that, if you make 4 changes, and run ```earlier 2```, last two changes would be reverted. Similarly, if you run command ```later 1```, Vim will redo one last change.
+
+The best thing about these commands is that you can actually undo and redo in time frames. For example, if you made a lot of changes in last 10 minutes, and you realized that all of them are wrong, it would take a lot of undo actions. Instead, you can simply ask Vim to undo all the changes you’ve made in last ten minutes by running a command earlier ```10m```. In similar way you can use the later command.
+
+Here are a couple examples which will show you all the possibilities of these commands:
+
+* ```:earlier 2d``` - Undo changes in last two days
+* ```:ea 3h``` - Undo changes in last three hours
+* ```:ea 1m``` - Undo changes in last one minute
+* ```:later 5m``` - Redo all the changes in last 5 minutes
+* ```:lat 15s```  - Redo all the changes in last 15 seconds
+* ```:earlier 3f``` - Undo last three file states (last three buffer writes)
+
+### Undo branches
+
+Vim has one more powerful feature when it comes to undo operation. Let’s see an example:
+
+1. Open a new file and write ```Hello```. Press _Esc_.
+
+```Hello```
+
+2. Hit o to go to a new line in Insert mode, and write ```world```. Press _Esc_.
+
+```
+Hello
+world
+```
+
+3. Now you hit ```u```. This undo action will remove word ```world```.
+
+```
+Hello
+```
+
+4. Now, as your cursor is on the first line again, on the word ```Hello```, press ```o```, type everyone and press _Esc_.
+
+```
+Hello
+everyone
+```
+
+5. If you hit ```u``` again, you will undo ```everyone```.
+
+```
+Hello
+```
+
+6. If you hit ```u``` again, you will remove ```Hello```. But, you will never get word ```world``` again. At least in most of the traditional editors.
+
+Basically, Vim creates an undo branch every time you hit ```u```. The branch represents the state of the file before you executed undo. So, you can use ```g-``` command to move backward or ```g+``` command to move forward between these branches.
+
+Take a few minutes to experiment with ```u```, ```Ctrl-r```, ```g-``` and ```g+``` and you’ll quickly understand how this works. To sum it up: using only ```u``` and ```Ctrl-r``` will not get you to all possible text states, while repeating ```g-``` and ```g+``` does.
+
+### Persistent Undo
+
+All of these feature are great, but there’s more! Vim (like every other text editor) can perform undo/redo actions in your current session. Once the session is closed, and you reopen the same file, running undo will do nothing—as you will be already at the oldest change.
+
+Vim supports persistent undo, which means that you can run undo/redo even from your previous sessions. Let’s say you edit some file. Then you close it. You open it again. And if you run undo, it will undo the last action from the previous session. This is great feature indeed! This way you can go back historically through changes of any of your files.
+
+How this works? It’s simple—Vim creates a new hidden files where it stores the undo history. Now, configuration is very simple. You could add only this line to your ```.vimrc```:
+
+```
+set undofile " Maintain undo history between sessions
+```
+
+and it would work. However, Vim will write hidden files in the same directory as the file you edit. Over time, this will become messy.
+
+The better way is to create a dedicated directory for these undo history files, running a command like:
+
+```
+$ mkdir ~/.vim/undodir
+```
+
+My assumption is that ~/.vim is your main Vim directory. Now, once you have created the directory, you need to add only one more line to your .vimrc file:
+
+```
+set undodir=~/.vim/undodir
+```
+
+That’s all. Vim will store all the undo history files in that directory, and you’ll have persistent undo working flawlessly. If you want to find out even more about undo feature in Vim, checkout Vim help with ```:help undo```.
+
+
+## Do you speak Vim?
+
+### Vim Language Elements
+
+**Verbs**
+
+First you need some basic verbs. They can be split in two groups: powerless verbs and powerful verbs.
+
+The powerless verbs is the name I like to use for verbs which can apply only to a single character. That’s why they are not really powerful—so, you get where the name comes from.
+
+Here they are:
+* ```x``` - delete character under the cursor to the right
+* ```X``` - delete character under the cursor to the left
+* ```r``` - replace character under the cursor with another character
+* ```s``` - delete character under the cursor and enter the Insert mode
+
+These are useful to know, and you’ll probably use them very often.
+
+The powerful verbs, are much more interesting. Here are the most important:
+
+* ```y``` - **y**ank (copy)
+* ```c``` - **c**hange
+* ```d``` - **d**elete
+* ```v``` - **v**isually select (not really a verb, but used with verbs)
+
+As you can see, it’s pretty easy to remember the commands for those words. It’s usually the first character of the verb.
+
+Note: These commands are usually known as operator commands or operators.
+
+### Modifiers
+
+In Vim, modifiers are used right before nouns, so you can describe how you want to influence the nouns. Here are the most important ones:
+
+* ```i``` - inner (inside)
+* ```a``` - a (```a```round)
+* ```NUM``` - number (e.g.: 1, 2, 10)
+* ```t``` - searches for something and stops before it (search until)
+* ```f``` - searches for that thing and lands on it (find)
+* ```/``` - find a string (literal or regular expression)
+
+### Nouns
+
+In English, nouns can be objects you do something to. It’s the same in Vim. Here are the most important ones:
+
+* ```w,W``` - start of next **w**ord or **W**ORD
+* ```b,B``` - start of previous word or WORD (start of word **b**efore)
+* ```e,E``` - **e**nd of word or WORD
+* ```s``` - **s**entence
+* ```p``` - **p**aragraph
+* ```t``` - **t**ag (in context of HTML/XML)
+* ```b``` - **b**lock (in context of programming)
+* ```h,j,k,l``` - left, down, up, right
+* ```$``` - end of line
+* ```^, 0``` - start of line
+
+These can be expanded and give you even more power:
+
+* ```aw``` - **a** (complete) **w**ord
+* ```as``` - **a** (complete) **s**entence
+* ```ap``` - **a** (complete) **p**aragraph
+* ```iw``` - **i**nner **w**ord
+* ```is``` - **i**nner **s**entence
+* ```ip``` - **i**nner **p**aragraph
+
+
+
